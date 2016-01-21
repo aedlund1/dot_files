@@ -1,0 +1,5 @@
+[user]
+	name = Aren Edlund
+	email = aedlund1@jaguarlandrover.com
+[init]
+	templatedir = ~/.git_template
