@@ -3,3 +3,5 @@
 	email = aedlund1@jaguarlandrover.com
 [init]
 	templatedir = ~/.git_template
+[core]
+	editor = vim
