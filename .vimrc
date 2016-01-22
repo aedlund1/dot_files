@@ -17,8 +17,17 @@ set autoindent
 set expandtab
 set cursorline
 set showmatch
+set splitbelow
+set splitright
+
 let python_highlight_all = 1
+
 imap jj <ESC>
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 call vundle#end()
 filetype plugin indent on
