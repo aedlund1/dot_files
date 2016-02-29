@@ -106,5 +106,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PYTHONPATH="${PYTHONPATH}:/home/aedlund/Work/rvi_backend"
+PYTHONPATH="${PYTHONPATH}:/home/aren/Work/rvi_backend"
 export PYTHONPATH
+PATH="$PATH:/home/aren/.cabal/bin"
+export PATH
+export QT_SELECT=5
