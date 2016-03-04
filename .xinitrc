@@ -3,7 +3,5 @@
 # /etc/X11/xinit/xinitrc
 #
 # global xinitrc file, used by all X sessions started by xinit (startx)
-
 # invoke global X session script
-. /etc/X11/Xsession
-xrandr --output DVI-I-1 --right-of DP-2
+/etc/X11/Xsession
