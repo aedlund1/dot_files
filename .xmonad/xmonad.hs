@@ -31,7 +31,7 @@ main = do
         , ((mod4Mask,               xK_p), spawn cmd_dmenu)
         , ((mod4Mask .|. shiftMask, xK_Up), spawn cmd_volUp)
         , ((mod4Mask .|. shiftMask, xK_Down), spawn cmd_volDown)
-        , ((mod4Mask .|. shiftMask, xk_Left), spawn cmd_volMute)
+        , ((mod4Mask .|. shiftMask, xK_Left), spawn cmd_spotifyPrevious)
         , ((mod4Mask .|. shiftMask, xK_Right), spawn cmd_spotifyNext)
         , ((mod4Mask .|. shiftMask, xK_p), spawn cmd_spotifyPlayPause)
         ]
