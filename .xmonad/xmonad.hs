@@ -36,15 +36,6 @@ import XMonad.Layout.LayoutModifier
 
 -------------------------------------------------------------------------------
 -- Main --
---main :: IO ()
---main = xmonad =<< statusBar cmd myPP kb conf
---    where 
---        uhook = withUrgencyHookC NoUrgencyHook urgentConfig
---        cmd = "bash -c \"tee >(xmobar -x0) | xmobar -x1\""
---        myPP = customPP
---        kb = toggleStrutsKey
---        conf = uhook myConfig
-
 main = do
     xmproc <- spawnPipe "/home/aren/.cabal/bin/xmobar /home/aren/.xmobarrc"
     xmonad $ myConfig { logHook = dynamicLogWithPP xmobarPP
@@ -132,10 +123,11 @@ layoutHook' = avoidStruts (tile ||| mtile ||| tab ||| full)
 startup :: X ()
 startup = do
     spawnOn "1-code" "gnome-terminal"
-    spawnOn "2-web" "firefox"
-    spawnOn "3-mail" "firefox"
+    spawnOn "2-web" "firefox --new-instance"
+    spawnOn "3-mail" "firefox --new-instance"
     spawnOn "4-spotify" "spotify"
     spawnOn "5-chat" "Mattermost"
+    spawn "/home/aren/work/dot_files/setup_monitors.sh"
 
 -------------------------------------------------------------------------------
 -- Terminal --
@@ -176,11 +168,11 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       , ((0, xK_Print), spawn "scrot")
         
       -- multimedia
-      , ((modMask .|. shiftMask, xK_Up), spawn cmd_volUp)
-      , ((modMask .|. shiftMask, xK_Down), spawn cmd_volDown)
-      , ((modMask .|. shiftMask, xK_Left), spawn cmd_spotifyPrevious)
-      , ((modMask .|. shiftMask, xK_Right), spawn cmd_spotifyNext)
-      , ((modMask .|. shiftMask, xK_p), spawn cmd_spotifyPlayPause)
+      , ((modMask .|. shiftMask, xK_Up),     spawn cmd_volUp)
+      , ((modMask .|. shiftMask, xK_Down),   spawn cmd_volDown)
+      , ((modMask .|. shiftMask, xK_Left),   spawn cmd_spotifyPrevious)
+      , ((modMask .|. shiftMask, xK_Right),  spawn cmd_spotifyNext)
+      , ((modMask .|. shiftMask, xK_p),      spawn cmd_spotifyPlayPause)
  
       -- grid
       , ((modMask,               xK_g     ), goToSelected myGSConfig)
