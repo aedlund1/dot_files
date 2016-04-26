@@ -5,12 +5,12 @@ Config {
         , border = TopB
         , bgColor = "black"
         , fgColor = "grey"
-        , position = Top 
+        , position = TopW C 100 
 
         --layout
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | %multicpu% | %memory% | %dynnetwork% }{<fc=#ee9a00>%date%</fc> | %uname% | %KPDX% "
+        , template = " %StdinReader% } %multicpu% | %memory% | %dynnetwork% { %date% | %uname% | %KPDX% "
 
         --behavior
         , allDesktops  = True
