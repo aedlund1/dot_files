@@ -1,7 +1,10 @@
 [user]
 	name = Aren Edlund
 	email = aedlund1@jaguarlandrover.com
+	signingkey = E5E4FB25
 [init]
 	templatedir = ~/.git_template
 [core]
 	editor = vim
+[color]
+	ui = auto

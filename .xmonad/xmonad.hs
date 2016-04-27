@@ -62,15 +62,15 @@ myConfig = defaultConfig { workspaces = workspaces'
 -------------------------------------------------------------------------------
 -- Window Management --
 manageHook' = manageSpawn <+> manageHook defaultConfig
---              composeAll [ isFullscreen             --> doFullFloat
---                         , className =? "MPlayer"   --> doFloat
---                         , className =? "mplayer2"  --> doFloat
---                         , className =? "mpv"       --> doFloat
---                         , className =? "Gimp"      --> doFloat
---                         , className =? "Vlc"       --> doFloat
---                         , insertPosition Below Newer
---                         , transience'
---                         ]
+                <+> composeAll [ isFullscreen             --> doFullFloat
+                               , className =? "MPlayer"   --> doFloat
+                               , className =? "mplayer2"  --> doFloat
+                               , className =? "mpv"       --> doFloat
+                               , className =? "Gimp"      --> doFloat
+                               , className =? "Vlc"       --> doFloat
+                               , insertPosition Below Newer
+                               , transience'
+                               ]
 
 
 -------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ borderWidth' = 2
 normalBorderColor'  = "#333333"
 focusedBorderColor' = "#AFAF87"
 
--- tabs
+-- tabs theme
 tabTheme1 = defaultTheme { decoHeight = 16
                          , activeColor = "#a6c292"
                          , activeBorderColor = "#a6c292"
@@ -122,22 +122,22 @@ layoutHook' = avoidStruts (tile ||| mtile ||| tab ||| full)
 -- startup Programs
 startup :: X ()
 startup = do
-    spawnOn "1-code" "gnome-terminal"
-    spawnOn "2-web" "firefox --new-instance"
+    spawnOn "1-code" "urxvt"
+    spawnOn "2-web" "vivaldi-stable"
     spawnOn "3-mail" "firefox --new-instance"
     spawnOn "4-spotify" "spotify"
     spawnOn "5-chat" "Mattermost"
-    spawn "/home/aren/work/dot_files/setup_monitors.sh"
+    spawn "/home/aren/Work/dot_files/setup_monitors.sh"
 
 -------------------------------------------------------------------------------
 -- Terminal --
-terminal' = "gnome-terminal"
+terminal' = "urxvt"
 
 -- Dmenu --
 cmd_dmenu = "dmenu_run -b"
 
 -- Locking --
-cmd_lock = "slock"
+cmd_lock = "slimlock"
 
 -- Multimedia --
 cmd_volDown = "amixer set Master 2-"
