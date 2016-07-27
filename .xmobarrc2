@@ -1,0 +1,25 @@
+Config {
+        -- appearance
+        font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+        , borderColor = "black"
+        , border = TopB
+        , bgColor = "black"
+        , fgColor = "grey"
+        , position = BottomW C 100 
+
+        --layout
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = " %spotify% }{ %status%"
+
+        --behavior
+        , allDesktops  = True
+        , pickBroadest = False
+
+        -- plugins 
+        , commands = 
+            --spotify
+            [ Run Com "/home/aren/Work/dot_files/spotify.py" [] "spotify" 5 ,
+            --spotify status
+            , Run Com "/home/aren/Work/dot_files/status.py" [] "status" 5 ]
+        }
