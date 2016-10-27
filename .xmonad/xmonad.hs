@@ -26,6 +26,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.SetWMName
 
 -- layouts
 import XMonad.Layout.NoBorders
@@ -38,6 +39,8 @@ import XMonad.Layout.LayoutModifier
 -- Main --
 main = do
     xmproc <- spawnPipe "/home/aren/.cabal/bin/xmobar /home/aren/.xmobarrc"
+    bottomBar <- spawnPipe "/home/aren/.cabal/bin/xmobar /home/aren/.xmobarrc2"
+    hPutStrLn bottomBar ""
     xmonad $ myConfig { logHook = dynamicLogWithPP xmobarPP
                                        { ppOutput = hPutStrLn xmproc
                                        , ppTitle = xmobarColor "green" "" . shorten 50
@@ -61,13 +64,13 @@ myConfig = defaultConfig { workspaces = workspaces'
 
 -------------------------------------------------------------------------------
 -- Window Management --
-manageHook' = manageSpawn <+> manageHook defaultConfig
-                <+> composeAll [ isFullscreen             --> doFullFloat
-                               , className =? "MPlayer"   --> doFloat
-                               , className =? "mplayer2"  --> doFloat
-                               , className =? "mpv"       --> doFloat
-                               , className =? "Gimp"      --> doFloat
-                               , className =? "Vlc"       --> doFloat
+manageHook' = manageDocks <+> manageHook defaultConfig
+                <+> composeAll [ isFullscreen                   --> doFullFloat
+                               , className =? "Chromium"        --> doShift "2-web" 
+                               , className =? "Google-chrome"   --> doShift "2-web" 
+                               , className =? "spotify"         --> doShift "4-spotify"
+                               , className =? "Mattermost"      --> doShift "5-chat"
+                               , className =? "VirtualBox"      --> doFloat
                                , insertPosition Below Newer
                                , transience'
                                ]
@@ -108,10 +111,10 @@ tabTheme1 = defaultTheme { decoHeight = 16
                          }
 
 -- workspaces
-workspaces' = ["1-code", "2-web", "3-mail", "4-spotify", "5-chat", "6", "7", "8", "9"]
+workspaces' = ["1-code", "2-web", "3-spotify", "4-chat", "5", "6", "7", "8", "9"]
 
 -- layouts
-layoutHook' = avoidStruts (tile ||| mtile ||| tab ||| full)
+layoutHook' = avoidStruts (tile ||| mtile ||| tab ||| full ||| rt)
     where
         rt = ResizableTall 1 (2/100) (1/2) []
         tile = renamed [Replace "[]="] $ smartBorders rt
@@ -122,12 +125,10 @@ layoutHook' = avoidStruts (tile ||| mtile ||| tab ||| full)
 -- startup Programs
 startup :: X ()
 startup = do
-    spawnOn "1-code" "urxvt"
-    spawnOn "2-web" "vivaldi-stable"
-    spawnOn "3-mail" "firefox --new-instance"
-    spawnOn "4-spotify" "spotify"
-    spawnOn "5-chat" "Mattermost"
     spawn "/home/aren/Work/dot_files/setup_monitors.sh"
+    spawnOn "1-code" "urxvt"
+    spawnOn "2-web" "google-chrome-stable"
+    setWMName "LG3D"
 
 -------------------------------------------------------------------------------
 -- Terminal --
@@ -137,7 +138,7 @@ terminal' = "urxvt"
 cmd_dmenu = "dmenu_run -b"
 
 -- Locking --
-cmd_lock = "slimlock"
+cmd_lock = "slock"
 
 -- Multimedia --
 cmd_volDown = "amixer set Master 2-"

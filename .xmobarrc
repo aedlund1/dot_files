@@ -15,6 +15,7 @@ Config {
         --behavior
         , allDesktops  = True
         , pickBroadest = False
+        , overrideRedirect = False
 
         -- plugins 
         , commands = 

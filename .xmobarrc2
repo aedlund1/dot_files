@@ -15,11 +15,12 @@ Config {
         --behavior
         , allDesktops  = True
         , pickBroadest = False
+        , overrideRedirect = False
 
         -- plugins 
         , commands = 
             --spotify
-            [ Run Com "/home/aren/Work/dot_files/spotify.py" [] "spotify" 5 ,
+            [ Run Com "/home/aren/Work/dot_files/spotify.py" [] "spotify" 5
             --spotify status
             , Run Com "/home/aren/Work/dot_files/status.py" [] "status" 5 ]
         }
