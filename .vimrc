@@ -16,6 +16,7 @@ Plugin 'webfd/vim-erlang'
 Plugin 'bling/vim-airline'
 Plugin 'lokaltog/powerline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'universal-ctags/ctags'
 
 colorscheme vividchalk
 syntax on
